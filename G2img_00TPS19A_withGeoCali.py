@@ -38,7 +38,7 @@ class TIF_ReaderClass(G2obj.ImportImage):
         super(self.__class__,self).__init__( # fancy way to self-reference
             extensionlist=('.tif','.tiff'),
             strictExtension=False,
-            formatName = 'TPS19A TIF image (GeoCali)',
+            formatName = 'TPS19A TIF (GeoCali) image',
             longFormatName = 'Various .tif and pseudo-TIF formats'
             )
         self.scriptable = True
@@ -252,4 +252,6 @@ def GeoCali(image, S2D_distance=260, horizontal_include=False, inner_include=Tru
         inner_curved = pixelx+inner_fitout
         app_im = np.array([np.interp(pixelx, inner_curved, app_im[i]) for i in range(4096)], dtype=np.int32)
     
+    #print note info.
+    print(f'--- TPS19A AreaDetector GeoCalc ---') 
     return(app_im)
